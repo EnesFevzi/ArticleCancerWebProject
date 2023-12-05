@@ -16,7 +16,6 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
         private readonly IUnıtOfWork _unitofWork;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _contextAccessor;
-
         private readonly IImageHelper _imageHelper;
         private readonly ClaimsPrincipal _user;
 

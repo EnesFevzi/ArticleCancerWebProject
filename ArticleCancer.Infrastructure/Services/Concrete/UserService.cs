@@ -1,4 +1,5 @@
 ﻿using ArticleCancer.Application.DTOs.Users;
+using ArticleCancer.Application.Models.Weathers;
 using ArticleCancer.Domain.Entities;
 using ArticleCancer.Domain.Enums;
 using ArticleCancer.Infrastructure.Consts;
@@ -7,28 +8,18 @@ using ArticleCancer.Infrastructure.Helpers.Images;
 using ArticleCancer.Infrastructure.Services.Abstract;
 using ArticleCancer.Persistence.UnıtOfWorks;
 using AutoMapper;
-using AutoMapper.Internal;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
+using System.Xml.Linq;
 
 namespace ArticleCancer.Infrastructure.Services.Concrete
 {
 	public class UserService : IUserService
 	{
-	
-
-
-
 		private readonly IUnıtOfWork _unitOfWork;
 		private readonly IImageHelper _imageHelper;
 		private readonly IHttpContextAccessor _httpContextAccessor;
@@ -55,9 +46,17 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 			return rnd.Next(100000, 1000000);
 		}
 
-		public async Task<IdentityResult> CreateUserAsync(UserAddDto userAddDto)
+		private string Mail(string mail)
 		{
-			
+			return mail;
+		}
+		public async Task<string> GetMailByUser(AppUser appUser)
+		{
+			return appUser.Email;
+		}
+
+		public async Task<(IdentityResult, string)> CreateUserAsync(UserAddDto userAddDto)
+		{
 			var map = _mapper.Map<AppUser>(userAddDto);
 			map.UserName = userAddDto.Email;
 			int confirmationCode = GenerateRandomCode();
@@ -70,21 +69,46 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 				bool mailSent = await SendMailConfirm(userAddDto.Email, confirmationCode);
 
 				if (!mailSent)
-				{	
-					return IdentityResult.Failed(new IdentityError { Description = "Onay maili gönderilemedi." });
+				{
+					await _userManager.DeleteAsync(map);
+					return (IdentityResult.Failed(new IdentityError { Description = "Onay maili gönderilemedi." }), null);
 				}
+
 				var addToRoleResult = await _userManager.AddToRoleAsync(map, RoleConsts.Member);
 
 				if (!addToRoleResult.Succeeded)
 				{
 					await _userManager.DeleteAsync(map);
-
-					return addToRoleResult;
+					return (addToRoleResult, null);
 				}
-				return IdentityResult.Success;
+
+				return (IdentityResult.Success, userAddDto.Email);
 			}
 
-			return createUserResult;
+			return (createUserResult, null);
+		}
+		public async Task<bool> ConfirmAccount(string mail, int confirmationCode)
+		{
+			var user = await _userManager.FindByEmailAsync(mail);
+
+			if (user != null && user.ConfirmCode == confirmationCode)
+			{
+				user.EmailConfirmed = true;
+
+				var result = await _userManager.UpdateAsync(user);
+
+				if (result.Succeeded)
+				{
+					return true;
+				}
+				else
+				{
+					
+					return false;
+				}
+			}
+
+			return false;
 		}
 		public Task<bool> SendMailConfirm(string mail, int confirmationCode)
 		{
@@ -251,7 +275,41 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 			return image.ImageID;
 		}
 
+        public async Task<WeatherInfo> GetWeatherInfo()
+        {
+            string api = "64d476e683236d625b8f0a39392c240a";
+            string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
+            XDocument document = XDocument.Load(connection);
+            var temperature = decimal.Parse(document.Descendants("temperature").ElementAt(0).Attribute("value").Value);
 
-		
-	}
+            temperature = Math.Round(temperature);
+
+            string condition = string.Empty;
+
+            if (temperature >= 30)
+            {
+                condition = "Bugün hava çok sıcak!";
+            }
+            else if (temperature >= 20)
+            {
+                condition = "Bugün hava ılıman.";
+            }
+            else if (temperature >= 10)
+            {
+                condition = "Bugün hava serin.";
+            }
+            else
+            {
+                condition = "Bugün hava soğuk.";
+            }
+
+            return new WeatherInfo
+            {
+                Condition = condition,
+                Temperature = temperature
+            };
+        }
+
+        
+    }
 }

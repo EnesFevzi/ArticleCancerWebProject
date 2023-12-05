@@ -27,7 +27,7 @@ namespace ArticleCancer.Persistence.Mappings
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                ImageID = Guid.Parse("D16A6EC7-8C50-4AB0-89A5-02B9A551F0FA")
+                ImageID = Guid.Parse("01673030-C382-45F8-84DC-A095BF6A7532")
             };
             superadmin.PasswordHash = CreatePasswordHash(superadmin, "123456");
 
@@ -44,7 +44,7 @@ namespace ArticleCancer.Persistence.Mappings
                 PhoneNumberConfirmed = false,
                 EmailConfirmed = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                ImageID = Guid.Parse("D16A6EC7-8C50-4AB0-89A5-02B9A551F0FA")
+                ImageID = Guid.Parse("01673030-C382-45F8-84DC-A095BF6A7532")
             };
             admin.PasswordHash = CreatePasswordHash(admin, "123456");
 

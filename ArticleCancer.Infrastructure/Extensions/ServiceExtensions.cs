@@ -20,6 +20,7 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<IArticleService, ArticleService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDashboardService, DashboardService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddAutoMapper(typeof(UserProfile));
 			services.AddControllersWithViews()

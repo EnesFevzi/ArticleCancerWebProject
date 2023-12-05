@@ -1,4 +1,5 @@
 ﻿using ArticleCancer.Application.DTOs.Users;
+using ArticleCancer.Application.Models.Emails;
 using ArticleCancer.Domain.Entities;
 using ArticleCancer.Infrastructure.Services.Abstract;
 using AutoMapper;
@@ -44,21 +45,53 @@ namespace ArticleCancer.WebUI.Controllers
 		public async Task<IActionResult> Register(UserAddDto userAddDto)
 		{
 			var validator = await _registerValidator.ValidateAsync(userAddDto);
+
 			if (!validator.IsValid)
 			{
 				validator.AddToModelState(this.ModelState);
 			}
-            else
-            {
-				var result = await _userService.CreateUserAsync(userAddDto);
+			else
+			{
+				var (result, userEmail) = await _userService.CreateUserAsync(userAddDto);
+
 				if (result.Succeeded)
 				{
 					_toastNotification.AddSuccessToastMessage("Kayıt işlemi başarıyla tamamlandı. Şimdi giriş yapabilirsiniz.", new ToastrOptions { Title = "İşlem Başarılı" });
-					return RedirectToAction("Login","Auth", new { area = " " });
+
+					return RedirectToAction("ConfirmEmail", "Auth", new { area = " ", email = userEmail });
 				}
+
 				ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır.");
 			}
-            return View();
+
+			return View();
+		}
+		[AllowAnonymous]
+		[HttpGet]
+		public IActionResult ConfirmEmail(string email)
+		{
+			var model = new ConfirmEmailViewModel { Email = email };
+			return View(model);
+		}
+
+		[AllowAnonymous]
+		[HttpPost]
+		public async Task<IActionResult> ConfirmEmail(ConfirmEmailViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				bool isConfirmed = await _userService.ConfirmAccount(model.Email, model.ConfirmationCode);
+
+				if (isConfirmed)
+				{
+					// E-posta doğrulama başarılıysa, istediğiniz sayfaya yönlendirme yapabilirsiniz.
+					return RedirectToAction("Login", "Auth", new { area = " " });
+				}
+
+				ModelState.AddModelError("", "E-posta doğrulama başarısız.");
+			}
+
+			return View(model);
 		}
 		[AllowAnonymous]
 		[HttpGet]
@@ -129,5 +162,7 @@ namespace ArticleCancer.WebUI.Controllers
             return View();
         }
 
-    }
+		
+	}
 }
+
