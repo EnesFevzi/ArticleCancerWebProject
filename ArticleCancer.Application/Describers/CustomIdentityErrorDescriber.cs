@@ -9,7 +9,8 @@ namespace ArticleCancer.Application.Describers
 {
     public class CustomIdentityErrorDescriber : IdentityErrorDescriber
     {
-        public override IdentityError PasswordRequiresUniqueChars(int uniqueChars)
+		
+		public override IdentityError PasswordRequiresUniqueChars(int uniqueChars)
         {
             return new IdentityError { Code = "PasswordRequiresUniqueChars", Description = $"En az {uniqueChars} farklı karakter içermelidir." };
         }

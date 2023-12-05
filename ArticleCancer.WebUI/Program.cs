@@ -1,10 +1,11 @@
 using ArticleCancer.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
-using ArticleCancer.Application.Extensions;
+using ArticleCancer.Infrastructure.Extensions;
 using ArticleCancer.Persistence.Extensions;
 using NToastNotify;
 using ArticleCancer.Application.Describers;
 using ArticleCancer.Persistence.Context;
+using System.Reflection;
 
 
 namespace ArticleCancer.WebUI
@@ -21,7 +22,9 @@ namespace ArticleCancer.WebUI
             builder.Services.LoadDataLayerExtension(builder.Configuration);
             builder.Services.LoadServiceLayerExtension();
             builder.Services.AddSession();
-            builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
+			
+
+			builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
             {
                 PositionClass = ToastPositions.TopRight,
                 TimeOut = 3000,
@@ -89,13 +92,6 @@ namespace ArticleCancer.WebUI
                 areaName: "Admin",
                 pattern: "{area:exists}/{controller=Home1}/{action=Index}/{id?}"
                 );
-
-                endpoints.MapAreaControllerRoute(
-                name: "Member",
-                areaName: "Member",
-                pattern: "{area:exists}/{controller=Home1}/{action=Index}/{id?}"
-                );
-
 
                 endpoints.MapControllerRoute(
                     name: "default",

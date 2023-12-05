@@ -1,0 +1,113 @@
+﻿@model UserAddDto
+
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Meme Kanseri Kayıt Sayfası</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="~/Login_v18/images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/css/util.css">
+	<link rel="stylesheet" type="text/css" href="~/Login_v18/css/main.css">
+	<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form asp-area=" " asp-controller="Auth" asp-action="Register" class="login100-form validate-form">
+					<span class="login100-form-title p-b-43">
+					KAYIT OL
+					</span>
+					<div asp-validation-summary="All" class="text-danger"></div>
+					<div class="wrap-input100 validate-input" data-validate="Ad Gereklidir">
+						<input asp-for="FirstName" class="input100" type="text" name="firstname">
+						<span asp-validation-for="FirstName" class="focus-input100"></span>
+						<span asp-validation-for="FirstName" class="label-input100">Ad</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Soyad Gereklidir">
+						<input asp-for="LastName" class="input100" type="text" name="lastname">
+						<span asp-validation-for="LastName" class="focus-input100"></span>
+						<span asp-validation-for="LastName" class="label-input100">Soyad</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Mail Gereklidir: ex@abc.xyz">
+						<input asp-for="Email" class="input100" type="text" name="email">
+						<span  class="focus-input100"></span>
+						<span asp-validation-for="Email" class="label-input100">Email</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Şifre Gereklidir">
+						<input asp-for="Password" class="input100" type="password" name="password">
+						<span  class="focus-input100"></span>
+						<span asp-validation-for="Password" class="label-input100">Şifre</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Şifre Tekrar Gereklidir">
+						<input asp-for="ConfirmPassword" class="input100" type="password" name="confirmpassword">
+						<span  class="focus-input100"></span>
+						<span asp-validation-for="ConfirmPassword" class="label-input100">Şifre Tekrar</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Kayıt Ol
+						</button>
+					</div>
+
+					<div class="text-center p-t-46 p-b-20">
+						<a asp-action="Login" asp-controller="Auth" asp-area=" " class="txt1">
+							Hesabım Var !
+						</a>
+					</div>
+				</form>
+
+				<div class="login100-more" style="background-image: url('/Login_v18/images/bg-03.jpg');">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/vendor/bootstrap/js/popper.js"></script>
+	<script src="~/Login_v18/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/vendor/daterangepicker/moment.min.js"></script>
+	<script src="~/Login_v18/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/Login_v18/js/main.js"></script>
+
+</body>
+</html>
