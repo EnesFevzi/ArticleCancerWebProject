@@ -6,6 +6,7 @@ using ArticleCancer.Infrastructure.Services.Concrete;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using NewCancer.Infrastructure.Services.Abstract;
 using System.Globalization;
 using System.Reflection;
 
@@ -21,6 +22,7 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDashboardService, DashboardService>();
+            services.AddScoped<INewService, NewService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddAutoMapper(typeof(UserProfile));
 			services.AddControllersWithViews()

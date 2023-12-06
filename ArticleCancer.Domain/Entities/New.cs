@@ -13,10 +13,18 @@ namespace ArticleCancer.Domain.Entities
         public Guid NewID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public int ViewCount { get; set; } = 0;
+
+        public Guid? ImageID { get; set; }
+        public Image Image { get; set; }
 
         public Guid CategoryID { get; set; }
         public Category Category { get; set; }
+
         public Guid UserID { get; set; }
         public AppUser User { get; set; }
+
+
+        public ICollection<NewVisitor> NewVisitors { get; set; }
     }
 }

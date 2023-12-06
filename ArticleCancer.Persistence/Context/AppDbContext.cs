@@ -28,6 +28,7 @@ namespace ArticleCancer.Persistence.Context
         public DbSet<Image> Images { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<New> News { get; set; }
+        public DbSet<NewVisitor> NewVisitors { get; set; }
         public DbSet<ToDo> ToDos { get; set; }
         public DbSet<Video> Videos { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)

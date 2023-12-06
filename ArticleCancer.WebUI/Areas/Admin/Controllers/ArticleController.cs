@@ -37,14 +37,14 @@ namespace ArticleCancer.WebUI.Areas.Admin.Controllers
         //[Authorize(Roles = $"{RoleConsts.Admin}, {RoleConsts.Member}")]
         public async Task<IActionResult> Index()
         {
-            var articles = await _articleService.GetAllArticlesWithCategoryNonDeletedByUserAsync();
+            var articles = await _articleService.GetAllArticlesWithCategoryNonDeletedAsync();
             return View(articles);
         }
         [HttpGet]
         //[Authorize(Roles = $"{RoleConsts.Admin}, {RoleConsts.Member}")]
         public async Task<IActionResult> DeletedArticle()
         {
-            var articles = await _articleService.GetAllArticlesWithCategoryDeletedByUserAsync();
+            var articles = await _articleService.GetAllArticlesWithCategoryDeletedAsync();
             return View(articles);
         }
         [HttpGet]
@@ -116,7 +116,7 @@ namespace ArticleCancer.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(Guid articleId)
         {
             var title = await _articleService.SafeDeleteArticleAsync(articleId);
-            _toastNotification.AddSuccessToastMessage(Messages.Article.Delete(title), new ToastrOptions() { Title = "İşlem Başarılı" });
+            _toastNotification.AddInfoToastMessage(Messages.Article.Delete(title), new ToastrOptions() { Title = "İşlem Başarılı" });
             return RedirectToAction("Index", "Article", new { Area = "Admin" });
         }
 
