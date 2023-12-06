@@ -84,7 +84,6 @@ namespace ArticleCancer.WebUI.Controllers
 
 				if (isConfirmed)
 				{
-					// E-posta doğrulama başarılıysa, istediğiniz sayfaya yönlendirme yapabilirsiniz.
 					return RedirectToAction("Login", "Auth", new { area = " " });
 				}
 
@@ -104,35 +103,26 @@ namespace ArticleCancer.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {
-			var validator = await _loginValidator.ValidateAsync(userLoginDto);
-			if (validator.IsValid)
+            var validator = await _loginValidator.ValidateAsync(userLoginDto);
+            if (validator.IsValid)
             {
-                var user = await userManager.FindByEmailAsync(userLoginDto.Email);
+                var user = await userManager.FindByNameAsync(userLoginDto.Username);
                 if (user != null)
                 {
-                    if (userLoginDto.Password != null)
+                    var result = await signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
+                    if (result.Succeeded)
                     {
-                        var result = await signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
-                        if (result.Succeeded)
-                        {
-                            return RedirectToAction("Index", "Dashboard");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır.");
-                            return View();
-                        }
-                    }
+						return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+					}
                     else
                     {
-                        ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır.");
+                        ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlıştır.");
                         return View();
                     }
-
                 }
                 else
                 {
-                    ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır.");
+                    ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlıştır.");
                     return View();
                 }
             }

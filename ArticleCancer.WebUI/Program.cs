@@ -94,9 +94,10 @@ namespace ArticleCancer.WebUI
                 );
 
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+					name: "default",
+					pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
+				
             });
 
             app.Run();

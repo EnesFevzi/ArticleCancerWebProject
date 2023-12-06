@@ -42,12 +42,11 @@
 						Giriş Yap
 					</span>
 					<div asp-validation-summary="All" class="text-danger"></div>
-					<div class="wrap-input100 validate-input" data-validate="Mail Gereklidir: ex@abc.xyz">
-						<input asp-for="Email" class="input100" type="text" name="email">
-						<span asp-validation-for="Email" class="focus-input100"></span>
-						<span asp-validation-for="Email" class="label-input100">Email</span>
+					<div class="wrap-input100 validate-input" data-validate="Kullanıcı Adı Gereklidir">
+						<input asp-for="Username" class="input100" type="text" name="username">
+						<span asp-validation-for="Username" class="focus-input100"></span>
+						<span asp-validation-for="Username" class="label-input100">Kullanıcı Adı</span>
 					</div>
-
 
 					<div class="wrap-input100 validate-input" data-validate="Şifre Gereklidir">
 						<input asp-for="Password" class="input100" type="password" name="password">

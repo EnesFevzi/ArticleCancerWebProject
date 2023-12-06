@@ -26,35 +26,25 @@ namespace ArticleCancer.WebUI.Areas.Admin.Controllers
             return Json(JsonConvert.SerializeObject(count));
         }
         [HttpGet]
-        public async Task<IActionResult> YearlyArticleCountsByUser()
-        {
-            var count = await _dashbordService.GetYearlyArticleByUserCounts();
-            return Json(JsonConvert.SerializeObject(count));
-        }
-        [HttpGet]
         public async Task<IActionResult> TotalArticleCount()
         {
             var count = await _dashbordService.GetTotalArticleCount();
             return Json(count);
         }
-        [HttpGet]
-        public async Task<IActionResult> TotalArticleCountByUser()
-        {
-            var count = await _dashbordService.GetTotalArticleCountByUser();
-            return Json(count);
-        }
+
         [HttpGet]
         public async Task<IActionResult> TotalNewCount()
         {
-            var count = await _dashbordService.GetTotalArticleCount();
+            var count = await _dashbordService.GetTotalNewCount();
             return Json(count);
         }
         [HttpGet]
-        public async Task<IActionResult> TotalNewCountByUser()
+        public async Task<IActionResult> TotalVideoCount()
         {
-            var count = await _dashbordService.GetTotalNewCountByUser();
+            var count = await _dashbordService.GetTotalVideoCount();
             return Json(count);
         }
+
         [HttpGet]
         public async Task<IActionResult> TotalCategoryCount()
         {

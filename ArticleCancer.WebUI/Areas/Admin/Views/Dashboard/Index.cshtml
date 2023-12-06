@@ -5,8 +5,6 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
 
-
-
         <div class="row">
             <div class="col-lg-8 mb-4 order-0">
                 <div class="card">
@@ -70,28 +68,39 @@
             <div class="col-24 col-md-8 col-lg-4 order-3 order-md-2">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-6 mb-4">
-                        @* <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-user-circle"></i>
+                        @{
+                            @if (!User.IsInRole($"{RoleConsts.Member}"))
+                            {
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex align-items-start justify-content-between">
+                                            <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-user-circle"></i>
+                                        </div>
+                                        <span class="fw-semibold d-block mb-1">Toplam <br /> Kullanıcı Sayısı</span>
+                                        <h3 class="card-title text-nowrap mb-1" id="toplamKullaniciSayisi" data-url="@Url.Action("TotalUserCounts", "Dashboard")"></h3>
+                                        <small class="text-success fw-semibold"></small>
+                                    </div>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">Toplam <br /> Yetenek Sayısı</span>
-                                <h3 class="card-title text-nowrap mb-1" id="toplamTecrübeSayisi" data-url="@Url.Action("TotalSkillCounts", "Dashboard")"></h3>
-                                <small class="text-success fw-semibold"></small>
-                            </div>
-                        </div> *@
+                            }
+                        }
                     </div>
+
                     <div class="col-lg-6 col-md-12 col-6 mb-4">
-                        @* <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-captions"></i>
-                                </div>
-                                <span class="fw-semibold d-block mb-1">Toplam  <br /> Eğitim Sayısı</span>
-                                <h3 class="card-title text-nowrap mb-1" id="toplamEğitimSayisi" data-url="@Url.Action("TotalEducationCounts", "Dashboard")"></h3>
-                                <small class="text-success fw-semibold"></small>
-                            </div>
-                        </div> *@
+                        <div class="card">
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.Member}"))
+                                {
+                                    <div class="card-body">
+                                        <div class="card-title d-flex align-items-start justify-content-between">
+                                            <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-captions"></i>
+                                        </div>
+                                        <span class="fw-semibold d-block mb-1">Toplam  <br /> Rol Sayısı</span>
+                                        <h3 class="card-title text-nowrap mb-1" id="toplamRolSayisi" data-url="@Url.Action("TotalRoleCounts", "Dashboard")"></h3>
+                                        <small class="text-success fw-semibold"></small>
+                                    </div>
+                                }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,13 +110,15 @@
         <!-- Order Statistics -->
         <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
             <div class="card h-100">
-                @* <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                    <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Toplam Hakkında Sayısı</h5>
-                    </div>
-                    <h3 class="card-title text-nowrap mb-1" id="toplamHakkındaSayisi" data-url="@Url.Action("TotalAboutCounts", "Dashboard")"></h3>
-                    <small class="text-success fw-semibold"></small>
-                </div> *@
+@* 
+                        <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                            <div class="card-title mb-0">
+                                <h5 class="m-0 me-2">Tüm Kullanıcıların Makale Sayısı</h5>
+                            </div>
+                            <h3 class="card-title text-nowrap mb-1" id="toplamHerkesinMakaleSayisi" data-url="@Url.Action("TotalArticleCount", "Dashboard")"></h3>
+                            <small class="text-success fw-semibold"></small>
+                        </div> *@
+
                 <div class="card-body">
                     @* <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column align-items-center gap-1">
@@ -181,19 +192,15 @@
         <!-- Expense Overview -->
         <div class="col-md-6 col-lg-4 order-1 mb-4">
             <div class="card h-100">
-                <div class="card-header">
-                    @* <ul class="nav nav-pills" role="tablist">
-                    <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-tabs-line-card-income" aria-controls="navs-tabs-line-card-income" aria-selected="true">Income</button>
-                    </li>
-                    <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab">Expenses</button>
-                    </li>
-                    <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab">Profit</button>
-                    </li>
-                    </ul> *@
-                </div>
+              
+                      @*   <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                            <div class="card-title mb-0">
+                                <h5 class="m-0 me-2">Tüm Kullanıcıların Haber Sayısı</h5>
+                            </div>
+                            <h3 class="card-title text-nowrap mb-1" id="toplamHerkesinHaberSayisi" data-url="@Url.Action("TotalNewCount", "Dashboard")"></h3>
+                            <small class="text-success fw-semibold"></small>
+                        </div> *@
+              
                 <div class="card-body px-0">
                     <div class="tab-content p-0">
                         @* <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
@@ -355,48 +362,60 @@
 
         var app = app || {}
         app.Urls = app.Urls || {}
-        app.Urls.yearlyArticleUrl = "@(Url.Action("YearlyArticleCountsByUser", "Dashboard"))";
-        app.Urls.totalArticleCountUrl = "@(Url.Action("TotalArticleCountByUser", "Dashboard"))";
-        app.Urls.totalNewCountUrl = "@(Url.Action("TotalNewCountByUser", "Dashboard"))";
+        app.Urls.yearlyArticleUrl = "@(Url.Action("YearlyArticleCounts", "Dashboard"))";
+        app.Urls.totalArticleCountUrl = "@(Url.Action("TotalArticleCount", "Dashboard"))";
+        app.Urls.totalNewCountUrl = "@(Url.Action("TotalNewCount", "Dashboard"))";
 
 
         $(document).ready(function () {
-            // var toplam = $("#toplamTecrübeSayisi").data("url");
-            // $.ajax({
-            //     type: "GET",
-            //     url: toplam,
-            //     dataType: "json",
-            //     success: function (data) {
-            //         $("#toplamTecrübeSayisi").append(data);
-            //     },
-            //     error: function () {
-            //         toastr.error("Tecrübe Sayısı yüklenirken hata oluştu", "Hata");
-            //     }
-            // });
+            var toplam = $("#toplamKullaniciSayisi").data("url");
+            $.ajax({
+                type: "GET",
+                url: toplam,
+                dataType: "json",
+                success: function (data) {
+                    $("#toplamKullaniciSayisi").append(data);
+                },
+                error: function () {
+                    toastr.error("Kullanıcı Sayısı yüklenirken hata oluştu", "Hata");
+                }
+            });
 
-            // var toplam = $("#toplamEğitimSayisi").data("url");
+            var toplam = $("#toplamRolSayisi").data("url");
+            $.ajax({
+                type: "GET",
+                url: toplam,
+                dataType: "json",
+                success: function (data) {
+                    $("#toplamRolSayisi").append(data);
+                },
+                error: function () {
+                    toastr.error("Rol Sayısı yüklenirken hata oluştu", "Hata");
+                }
+            });
+
+            // var toplam = $("#toplamHerkesinMakaleSayisi").data("url");
             // $.ajax({
             //     type: "GET",
             //     url: toplam,
             //     dataType: "json",
             //     success: function (data) {
-            //         $("#toplamEğitimSayisi").append(data);
+            //         $("#toplamHerkesinMakaleSayisi").append(data);
             //     },
             //     error: function () {
             //         toastr.error("Eğitim Sayısı yüklenirken hata oluştu", "Hata");
             //     }
             // });
-
-            // var toplam = $("#toplamHakkındaSayisi").data("url");
+            // var toplam = $("#toplamHerkesinHaberSayisi").data("url");
             // $.ajax({
             //     type: "GET",
             //     url: toplam,
             //     dataType: "json",
             //     success: function (data) {
-            //         $("#toplamHakkındaSayisi").append(data);
+            //         $("#toplamHerkesinHaberSayisi").append(data);
             //     },
             //     error: function () {
-            //         toastr.error("Eğitim Sayısı yüklenirken hata oluştu", "Hata");
+            //         toastr.error("Haber Sayısı yüklenirken hata oluştu", "Hata");
             //     }
             // });
 

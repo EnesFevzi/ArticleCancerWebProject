@@ -12,12 +12,12 @@ namespace ArticleCancer.Application.FluentValidations.Auth
     {
         public LoginValidator()
         {
-            RuleFor(x => x.Email)
+            RuleFor(x => x.Username)
                 .NotEmpty()
                 .NotNull()
                 .MinimumLength(3)
                 .MaximumLength(20)
-                .WithName("Email");
+                .WithName("Kullanıcı Adı");
 
             RuleFor(x => x.Password)
                 .NotEmpty()

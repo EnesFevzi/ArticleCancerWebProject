@@ -58,7 +58,10 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 		public async Task<(IdentityResult, string)> CreateUserAsync(UserAddDto userAddDto)
 		{
 			var map = _mapper.Map<AppUser>(userAddDto);
-			map.UserName = userAddDto.Email;
+
+			var username = userAddDto.Email.Split('@').FirstOrDefault();
+			map.UserName = username;
+
 			int confirmationCode = GenerateRandomCode();
 			map.ConfirmCode = confirmationCode;
 

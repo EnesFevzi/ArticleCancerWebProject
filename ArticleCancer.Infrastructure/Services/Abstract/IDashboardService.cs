@@ -9,13 +9,10 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
     public interface IDashboardService
     {
         Task<List<int>> GetYearlyArticleCounts();
-        Task<List<int>> GetYearlyArticleByUserCounts();
         Task<int> GetTotalArticleCount();
-        Task<int> GetTotalArticleCountByUser();
         Task<int> GetTotalCategoryCount();
-        Task<int> GetTotalCategoryCountByUser();
         Task<int> GetTotalNewCount();
-        Task<int> GetTotalNewCountByUser();
+        Task<int> GetTotalVideoCount();
         Task<int> GetTotalUserCount();
         Task<int> GetTotalRoleCount();
     }
