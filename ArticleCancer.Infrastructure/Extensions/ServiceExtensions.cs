@@ -25,6 +25,7 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<INewService, NewService>();
+            services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IVideoBlogService, VideoBlogService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddAutoMapper(typeof(UserProfile));
