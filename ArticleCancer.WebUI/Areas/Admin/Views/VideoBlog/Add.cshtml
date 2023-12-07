@@ -1,0 +1,103 @@
+﻿@model VideoBlogAddDto
+@{
+    ViewData["Title"] = "Add";
+}
+
+
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Videolu Blog Yönetimi /</span> Videolu Blog Ekle
+</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header"></h5>
+            <form asp-controller="VideoBlog" asp-action="Add" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="CategoryId">Kategori</label>
+                        <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"CategoryID","Name"))"></select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title" id="defaultFormControlInput" class="form-label">Başlık</label>
+                        <input asp-for="Title" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                    <label asp-for="Content" for="defaultFormControlInput" class="form-label">İçerik</label>
+                    <textarea asp-for="Content" rows="3" cols="40" type="text" class="form-control mb-3" id="defaultFormControlInput" style="min-height:300px;" placeholder="İçerik" aria-describedby="defaultFormControlHelp"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                    </div> *@
+                    <div class="form-group">
+                        <label asp-for="Content" for="defaultFormControlInput" class="form-label">İçerik</label>
+                        <textarea id="myeditor" asp-for="Content" rows="3" cols="40" type="text" class="form-control mb-3" id="defaultFormControlInput" style="min-height:300px;" placeholder="İçerik" aria-describedby="defaultFormControlHelp"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Movie" for="defaultFormControlInput" class="form-label">Video seçiniz</label>
+                        <input asp-for="Movie" type="file" accept="video/*" class="form-control mb-3" id="videoInput" aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="Movie" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="progress" style="display: none;">
+                            <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (e) {
+                e.preventDefault();
+
+                var formData = new FormData($(this)[0]);
+                var progressBar = $('#progressBar');
+
+                $.ajax({
+                    url: '@Url.Action("Add", "VideoBlog")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.upload.addEventListener('progress', function (e) {
+                            if (e.lengthComputable) {
+                                var percent = (e.loaded / e.total) * 100;
+                                progressBar.width(percent + '%');
+                                progressBar.text(percent.toFixed(0) + '%');
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    success: function (result) {
+                        // Başarıyla tamamlandığında yapılacak işlemler
+                        console.log(result);
+                    },
+                    error: function (xhr, status, error) {
+                        // Hata durumunda yapılacak işlemler
+                        console.error(xhr.responseText);
+                    },
+                    complete: function () {
+                        progressBar.width('0%');
+                        progressBar.text('0%');
+                    }
+                });
+            });
+        });
+    </script>
+
+

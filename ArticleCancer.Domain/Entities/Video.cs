@@ -1,5 +1,4 @@
-﻿using ArticleCancer.Application.Interfaces.Entities;
-using ArticleCancer.Domain.BaseEntity;
+﻿using ArticleCancer.Domain.BaseEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +7,24 @@ using System.Threading.Tasks;
 
 namespace ArticleCancer.Domain.Entities
 {
-    public class Video:EntityBase
+    public class Video : EntityBase
     {
+        public Video()
+        {
+            VideoBlogs = new HashSet<VideoBlog>();
+        }
+        public Video(string fileName, string fileType, string createdBy)
+        {
+            FileName = fileName;
+            FileType = fileType;
+            CreatedBy = createdBy;
+        }
+
         public Guid VideoID { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string VideoURL { get; set; }
+        public string FileName { get; set; }
+        public string FileType { get; set; }
 
+        public ICollection<VideoBlog> VideoBlogs { get; set; }
 
-        public Guid CategoryID { get; set; }
-        public Category Category { get; set; }
-        public Guid UserID { get; set; }
-        public AppUser Users { get; set; }
     }
 }

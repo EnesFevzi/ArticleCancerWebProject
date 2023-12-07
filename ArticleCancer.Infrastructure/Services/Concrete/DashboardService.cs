@@ -74,7 +74,7 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 
         public async Task<int> GetTotalVideoCount()
         {
-            var articleCount = await _unıtOfWork.GetRepository<Video>().CountAsync();
+            var articleCount = await _unıtOfWork.GetRepository<VideoBlog>().CountAsync();
             return articleCount;
         }
     }

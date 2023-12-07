@@ -1,6 +1,7 @@
 ﻿using ArticleCancer.Application.AutoMapper.Users;
 using ArticleCancer.Application.FluentValidations.Articles;
 using ArticleCancer.Infrastructure.Helpers.Images;
+using ArticleCancer.Infrastructure.Helpers.Videos;
 using ArticleCancer.Infrastructure.Services.Abstract;
 using ArticleCancer.Infrastructure.Services.Concrete;
 using FluentValidation.AspNetCore;
@@ -18,11 +19,13 @@ namespace ArticleCancer.Infrastructure.Extensions
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IVideoHelper, VideoHelper>();
             services.AddScoped<IArticleService, ArticleService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<INewService, NewService>();
+            services.AddScoped<IVideoBlogService, VideoBlogService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddAutoMapper(typeof(UserProfile));
 			services.AddControllersWithViews()

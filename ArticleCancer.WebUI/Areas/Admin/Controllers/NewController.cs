@@ -53,7 +53,7 @@ namespace ArticleCancer.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Add()
         {
             var categories = await _categoryService.GetAllCategoriesNonDeleted();
-            return View(new ArticleAddDto { Categories = categories });
+            return View(new NewAddDto { Categories = categories });
         }
         [HttpPost]
         //[Authorize(Roles = $"{RoleConsts.Admin}, {RoleConsts.Member}")]

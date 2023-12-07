@@ -1,0 +1,58 @@
+﻿@model List<VideoBlogDto>
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Videolu Blog Yönetimi /</span> Videolu Bloglar
+    </h4>
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+            <table class="table table-bordered" id="videoBlogsTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var article in Model)
+                    {
+                        <tr name="@article.VideoBlogID">
+                            <td>@article.Title</td>
+                            <td>@article.Category.Name</td>
+                            <td>@article.CreatedDate.ToShortDateString()</td>
+                            <td>@article.CreatedBy</td>
+                            <td>@(article.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                            <td>
+
+                                <a class="btn btn-warning btn-sm" data-id="@article.VideoBlogID" asp-area="Admin" asp-controller="VideoBlog" asp-action="UndoDelete" asp-route-videoBlogId="@article.VideoBlogID"><i class='bx bx-undo'></i></a>
+                               
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+</div>
+
+@section Scripts {
+    <script src="~/js/videoBlogIndex.js" type="application/ecmascript"></script>
+}

@@ -30,7 +30,8 @@ namespace ArticleCancer.Persistence.Context
         public DbSet<New> News { get; set; }
         public DbSet<NewVisitor> NewVisitors { get; set; }
         public DbSet<ToDo> ToDos { get; set; }
-        public DbSet<Video> Videos { get; set; }
+        public DbSet<VideoBlog> VideoBlogs { get; set; }
+        public DbSet<Video> Video { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

@@ -78,14 +78,14 @@ namespace ArticleCancer.Persistence.Migrations
                         new
                         {
                             Id = new Guid("343f8370-28d4-4ade-91df-7965041b98f1"),
-                            ConcurrencyStamp = "c73d21ff-6857-4922-8bfe-269bd59e7fc5",
+                            ConcurrencyStamp = "1f1e1ea7-75cd-477d-84a2-8da446dd41c7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("f0a0b477-42aa-47fd-9e01-a81da466848d"),
-                            ConcurrencyStamp = "6f2d04bb-f772-4318-b234-fe44607414a6",
+                            ConcurrencyStamp = "94fe3d93-481d-49ab-8b63-242ef19b5d7e",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
@@ -177,7 +177,7 @@ namespace ArticleCancer.Persistence.Migrations
                         {
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "787b174b-f961-4bc9-b638-04dec1ee7057",
+                            ConcurrencyStamp = "7d5fdfd5-6dfd-43d7-bd59-403c2a5172b9",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Enes Fevzi",
@@ -186,10 +186,10 @@ namespace ArticleCancer.Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF81UZkeG4MBISmr6bf4gx0cvdB+t1inJWqc6sanu+9kRzMpn5zFTsQ9drwaBkTk8g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHGshwUx5rW15Axw1wJy8D+gxfNYF1gE1MENvF1khUU0KlUd1uCNIL5ci1vEmMV26A==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "b4417bbd-b695-4751-a61a-14a9760c2c29",
+                            SecurityStamp = "748d44b0-abf6-4422-9542-8619e870d0ef",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -197,7 +197,7 @@ namespace ArticleCancer.Persistence.Migrations
                         {
                             Id = new Guid("b207b056-26ac-4be9-b6a5-07eb8c9e8d76"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5cc6ff99-b893-4c41-ac66-0f19ed568b42",
+                            ConcurrencyStamp = "1826264b-8027-4911-896c-5f0d7b8af06e",
                             Email = "enssfvvzi@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Member",
@@ -206,10 +206,10 @@ namespace ArticleCancer.Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ENSSFVVZI@GMAIL.COM",
                             NormalizedUserName = "ENSSFVVZI@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM2Wvk+5jA+3PtZ8mV5qOjJ3dpFVQxjhPebCIqyWefjPeSCV4w+HM0Y7DbyPRA3urg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENjQ+FTjQ4U2gQrvX9uNHaPm9bVOSxXqUJVoGVaRcEZClJRprHdZC89oDdZ3886bpQ==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "112725e1-546e-4f7a-96c5-606fe394f55c",
+                            SecurityStamp = "8670ba10-3051-4d44-960c-4b8f9bc100dd",
                             TwoFactorEnabled = false,
                             UserName = "enssfvvzi@gmail.com"
                         });
@@ -279,7 +279,7 @@ namespace ArticleCancer.Persistence.Migrations
                             CategoryID = new Guid("9019dd67-01e4-4435-a939-88ab3042c44a"),
                             Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 12, 5, 23, 36, 34, 155, DateTimeKind.Local).AddTicks(5374),
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(4323),
                             ImageID = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
                             Title = "Asp.net Core Deneme Makalesi 1",
@@ -292,7 +292,7 @@ namespace ArticleCancer.Persistence.Migrations
                             CategoryID = new Guid("9019dd67-01e4-4435-a939-88ab3042c44a"),
                             Content = "Visual Studio Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 12, 5, 23, 36, 34, 155, DateTimeKind.Local).AddTicks(5379),
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(4327),
                             ImageID = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
                             Title = "Visual Studio Deneme Makalesi 1",
@@ -379,7 +379,7 @@ namespace ArticleCancer.Persistence.Migrations
                         {
                             CategoryID = new Guid("9019dd67-01e4-4435-a939-88ab3042c44a"),
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 12, 5, 23, 36, 34, 155, DateTimeKind.Local).AddTicks(6029),
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(5095),
                             IsDeleted = false,
                             Name = "Meme Kanseri"
                         });
@@ -521,7 +521,7 @@ namespace ArticleCancer.Persistence.Migrations
                         {
                             ImageID = new Guid("01673030-c382-45f8-84dc-a095bf6a7532"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 12, 5, 23, 36, 34, 155, DateTimeKind.Local).AddTicks(6092),
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(5165),
                             FileName = "user-images/user.png",
                             FileType = "image/png",
                             IsDeleted = false
@@ -530,7 +530,7 @@ namespace ArticleCancer.Persistence.Migrations
                         {
                             ImageID = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 12, 5, 23, 36, 34, 155, DateTimeKind.Local).AddTicks(6095),
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(5167),
                             FileName = "article-images/defaultarticle.png",
                             FileType = "image/png",
                             IsDeleted = false
@@ -616,6 +616,9 @@ namespace ArticleCancer.Persistence.Migrations
                     b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
                     b.HasKey("NewID");
 
                     b.HasIndex("CategoryID");
@@ -625,6 +628,49 @@ namespace ArticleCancer.Persistence.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("News");
+
+                    b.HasData(
+                        new
+                        {
+                            NewID = new Guid("20042866-5942-4772-99ec-75b17944bed8"),
+                            CategoryID = new Guid("9019dd67-01e4-4435-a939-88ab3042c44a"),
+                            Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
+                            CreatedBy = "Admin Test",
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(5253),
+                            ImageID = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
+                            IsDeleted = false,
+                            Title = "Asp.net Core Deneme Makalesi 1",
+                            UserID = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
+                            ViewCount = 15
+                        },
+                        new
+                        {
+                            NewID = new Guid("ff859916-d03b-4291-8e99-b4311f2b9d3b"),
+                            CategoryID = new Guid("9019dd67-01e4-4435-a939-88ab3042c44a"),
+                            Content = "Visual Studio Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
+                            CreatedBy = "Admin Test",
+                            CreatedDate = new DateTime(2023, 12, 7, 22, 17, 11, 397, DateTimeKind.Local).AddTicks(5256),
+                            ImageID = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
+                            IsDeleted = false,
+                            Title = "Visual Studio Deneme Makalesi 1",
+                            UserID = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
+                            ViewCount = 15
+                        });
+                });
+
+            modelBuilder.Entity("ArticleCancer.Domain.Entities.NewVisitor", b =>
+                {
+                    b.Property<Guid>("NewID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("VisitorID")
+                        .HasColumnType("int");
+
+                    b.HasKey("NewID", "VisitorID");
+
+                    b.HasIndex("VisitorID");
+
+                    b.ToTable("NewVisitors");
                 });
 
             modelBuilder.Entity("ArticleCancer.Domain.Entities.ToDo", b =>
@@ -658,6 +704,46 @@ namespace ArticleCancer.Persistence.Migrations
             modelBuilder.Entity("ArticleCancer.Domain.Entities.Video", b =>
                 {
                     b.Property<Guid>("VideoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("VideoID");
+
+                    b.ToTable("Video");
+                });
+
+            modelBuilder.Entity("ArticleCancer.Domain.Entities.VideoBlog", b =>
+                {
+                    b.Property<Guid>("VideoBlogID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -696,20 +782,21 @@ namespace ArticleCancer.Persistence.Migrations
                     b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UsersId")
+                    b.Property<Guid>("VideoID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("VideoURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
 
-                    b.HasKey("VideoID");
+                    b.HasKey("VideoBlogID");
 
                     b.HasIndex("CategoryID");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserID");
 
-                    b.ToTable("Videos");
+                    b.HasIndex("VideoID");
+
+                    b.ToTable("VideoBlogs");
                 });
 
             modelBuilder.Entity("ArticleCancer.Domain.Entities.Visitor", b =>
@@ -953,7 +1040,7 @@ namespace ArticleCancer.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ArticleCancer.Domain.Entities.Image", null)
+                    b.HasOne("ArticleCancer.Domain.Entities.Image", "Image")
                         .WithMany("News")
                         .HasForeignKey("ImageID");
 
@@ -965,7 +1052,28 @@ namespace ArticleCancer.Persistence.Migrations
 
                     b.Navigation("Category");
 
+                    b.Navigation("Image");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ArticleCancer.Domain.Entities.NewVisitor", b =>
+                {
+                    b.HasOne("ArticleCancer.Domain.Entities.New", "New")
+                        .WithMany("NewVisitors")
+                        .HasForeignKey("NewID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArticleCancer.Domain.Entities.Visitor", "Visitor")
+                        .WithMany()
+                        .HasForeignKey("VisitorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("New");
+
+                    b.Navigation("Visitor");
                 });
 
             modelBuilder.Entity("ArticleCancer.Domain.Entities.ToDo", b =>
@@ -975,7 +1083,7 @@ namespace ArticleCancer.Persistence.Migrations
                         .HasForeignKey("AppUserId");
                 });
 
-            modelBuilder.Entity("ArticleCancer.Domain.Entities.Video", b =>
+            modelBuilder.Entity("ArticleCancer.Domain.Entities.VideoBlog", b =>
                 {
                     b.HasOne("ArticleCancer.Domain.Entities.Category", "Category")
                         .WithMany()
@@ -983,15 +1091,23 @@ namespace ArticleCancer.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ArticleCancer.Domain.Entities.AppUser", "Users")
+                    b.HasOne("ArticleCancer.Domain.Entities.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("UsersId")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArticleCancer.Domain.Entities.Video", "Video")
+                        .WithMany("VideoBlogs")
+                        .HasForeignKey("VideoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
+
+                    b.Navigation("Video");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -1071,6 +1187,16 @@ namespace ArticleCancer.Persistence.Migrations
                     b.Navigation("News");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("ArticleCancer.Domain.Entities.New", b =>
+                {
+                    b.Navigation("NewVisitors");
+                });
+
+            modelBuilder.Entity("ArticleCancer.Domain.Entities.Video", b =>
+                {
+                    b.Navigation("VideoBlogs");
                 });
 
             modelBuilder.Entity("ArticleCancer.Domain.Entities.Visitor", b =>

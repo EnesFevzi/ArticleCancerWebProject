@@ -65,5 +65,24 @@ namespace ArticleCancer.Infrastructure.ResultMessages
                 return $"{newTitle} başlıklı haber başarıyla geri alınmıştır.";
             }
         }
+        public static class VideoBlog
+        {
+            public static string Add(string newTitle)
+            {
+                return $"{newTitle} başlıklı video başarıyla eklenmiştir.";
+            }
+            public static string Update(string newTitle)
+            {
+                return $"{newTitle} başlıklı video başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string newTitle)
+            {
+                return $"{newTitle} başlıklı video başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string newTitle)
+            {
+                return $"{newTitle} başlıklı video başarıyla geri alınmıştır.";
+            }
+        }
     }
 }

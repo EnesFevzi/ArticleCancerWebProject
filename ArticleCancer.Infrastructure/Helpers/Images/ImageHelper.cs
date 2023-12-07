@@ -106,7 +106,7 @@ namespace ArticleCancer.Infrastructure.Helpers.Images
 
             DateTime dateTime = DateTime.Now;
 
-            string newFileName = $"{name}_{dateTime.Millisecond}_{firstThreeCharacters}{fileExtension}";
+            string newFileName = $"{name}_{Guid.NewGuid()}_{firstThreeCharacters}{fileExtension}";
 
             var path = Path.Combine($"{wwwroot}/{imgFolder}/{folderName}", newFileName);
 
@@ -114,9 +114,7 @@ namespace ArticleCancer.Infrastructure.Helpers.Images
             await imageFile.CopyToAsync(stream);
             await stream.FlushAsync();
 
-            string message = imageType == ImageType.User
-                ? $"{newFileName} isimli kullanıcı resmi başarı ile eklenmiştir."
-                : $"{newFileName} isimli makale resmi başarı ile eklenmiştir";
+
 
             return new ImageUploadedDto()
             {
