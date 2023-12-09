@@ -34,6 +34,30 @@
                     <div data-i18n="Analytics">Kategori Yönetimi</div>
                 </a>
             </li>
+          
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-task"></i>
+                    <div data-i18n="Account Settings">Yapılacaklar</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a asp-area="Admin" asp-controller="ToDo" asp-action="Index" class="menu-link">
+                            <div data-i18n="Account">Yapılacaklar(İki liste bir arada)</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-area="Admin" asp-controller="ToDo" asp-action="ListCompleted" class="menu-link">
+                            <div data-i18n="Account">Tamamlanmış</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-area="Admin" asp-controller="ToDo" asp-action="ListNonCompleted" class="menu-link">
+                            <div data-i18n="Account">Tamamlanmamış </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             @*     <li class="menu-item">
     <a asp-area="Admin" asp-controller="SocialMedia" asp-action="Index" class="menu-link">
     <i class='menu-icon bx bx-cube-alt'></i>

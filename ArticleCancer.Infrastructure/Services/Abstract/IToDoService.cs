@@ -22,6 +22,7 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
         Task<string> ChangeStatusNonCompletedAsync(Guid toDoId);
         Task<string> UpdateToDoAsync(ToDoUpdateDto toDoUpdateDto);
         Task<string> SafeDeleteToDoAsync(Guid todoId);
+        Task<string> HardDeleteToDoAsync(Guid todoId);
         Task<string> UndoDeleteToDoAsync(Guid todoId);
     }
 }

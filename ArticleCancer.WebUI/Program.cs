@@ -60,6 +60,7 @@ namespace ArticleCancer.WebUI
                 config.SlidingExpiration = true;
                 config.ExpireTimeSpan = TimeSpan.FromDays(7);
                 config.AccessDeniedPath = new PathString("/Auth/AccessDenied");
+                
 
             });
 

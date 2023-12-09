@@ -1,18 +1,11 @@
-﻿using ArticleCancer.Application.DTOs.Categories;
-using ArticleCancer.Application.DTOs.ToDos;
+﻿using ArticleCancer.Application.DTOs.ToDos;
 using ArticleCancer.Domain.Entities;
 using ArticleCancer.Infrastructure.Extensions;
 using ArticleCancer.Infrastructure.Services.Abstract;
 using ArticleCancer.Persistence.UnıtOfWorks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using static ArticleCancer.Infrastructure.ResultMessages.Messages;
 
 namespace ArticleCancer.Infrastructure.Services.Concrete
 {
@@ -129,6 +122,14 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
             var categories = await _unıtOfWork.GetRepository<ToDo>().GetAsync(x => x.ToDoID == toDoId);
             var map = _mapper.Map<ToDoDto>(categories);
             return map;
+        }
+
+        public async Task<string> HardDeleteToDoAsync(Guid todoId)
+        {
+            var category = await _unıtOfWork.GetRepository<ToDo>().GetByGuidAsync(todoId);
+            await _unıtOfWork.GetRepository<ToDo>().DeleteAsync(category);
+            await _unıtOfWork.SaveAsync();
+            return category.Name;
         }
 
         public async Task<string> SafeDeleteToDoAsync(Guid todoId)

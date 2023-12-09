@@ -84,5 +84,44 @@ namespace ArticleCancer.Infrastructure.ResultMessages
                 return $"{newTitle} başlıklı video başarıyla geri alınmıştır.";
             }
         }
+        public static class ToDo
+        {
+            public static string Add(string newTitle)
+            {
+                return $"{newTitle} başlıklı görev başarıyla eklenmiştir.";
+            }
+            public static string Update(string newTitle)
+            {
+                return $"{newTitle} başlıklı görev başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string newTitle)
+            {
+                return $"{newTitle} başlıklı görev başarıyla silinmiştir.";
+            }
+            public static string Completed(string newTitle)
+            {
+                return $"{newTitle} başlıklı görev başarıyla Tamamlandı.";
+            }
+            public static string NonCompleted(string newTitle)
+            {
+                return $"{newTitle} başlıklı görev  Tamamlanmadı.";
+            }
+
+        }
+        public static class User
+        {
+            public static string Add(string userName)
+            {
+                return $"{userName} email adresli kullanıcı başarıyla eklenmiştir.";
+            }
+            public static string Update(string userName)
+            {
+                return $"{userName} email adresli kullanıcı başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string userName)
+            {
+                return $"{userName} email adresli kullanıcı başarıyla silinmiştir.";
+            }
+        }
     }
 }

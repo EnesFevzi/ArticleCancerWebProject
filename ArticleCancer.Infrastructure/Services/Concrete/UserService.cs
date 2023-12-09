@@ -313,6 +313,19 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
             };
         }
 
-        
+        public async Task<IdentityResult> CreateUserAsyncByAdmin(UserAddDto2 userAddDto)
+        {
+            var map = _mapper.Map<AppUser>(userAddDto);
+            map.UserName = userAddDto.Email;
+            var result = await _userManager.CreateAsync(map, string.IsNullOrEmpty(userAddDto.Password) ? "" : userAddDto.Password);
+            if (result.Succeeded)
+            {
+                var findRole = await _roleManager.FindByIdAsync(userAddDto.RoleId.ToString());
+                await _userManager.AddToRoleAsync(map, findRole.ToString());
+                return result;
+            }
+            else
+                return result;
+        }
     }
 }

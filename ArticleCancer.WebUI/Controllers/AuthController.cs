@@ -112,8 +112,10 @@ namespace ArticleCancer.WebUI.Controllers
                     var result = await signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
                     if (result.Succeeded)
                     {
-						return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-					}
+                        //Response.Cookies.Append("ArticleCancer", "true");
+                        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                       
+                    }
                     else
                     {
                         ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlıştır.");
@@ -151,8 +153,14 @@ namespace ArticleCancer.WebUI.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> LetsRegister()
+        {
+            return View();
+        }
 
-		
-	}
+
+    }
 }
 

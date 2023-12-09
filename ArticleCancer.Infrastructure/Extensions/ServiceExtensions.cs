@@ -1,5 +1,7 @@
 ﻿using ArticleCancer.Application.AutoMapper.Users;
 using ArticleCancer.Application.FluentValidations.Articles;
+using ArticleCancer.Infrastructure.Filter.ArticleVisitors;
+using ArticleCancer.Infrastructure.Filter.VideoBlogVisitors;
 using ArticleCancer.Infrastructure.Helpers.Images;
 using ArticleCancer.Infrastructure.Helpers.Videos;
 using ArticleCancer.Infrastructure.Services.Abstract;
@@ -28,7 +30,12 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IVideoBlogService, VideoBlogService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-			services.AddAutoMapper(typeof(UserProfile));
+
+            services.AddScoped<ArticleVisitorFilter>();
+            services.AddScoped<VideoBlogVisitorFilter>();
+
+
+            services.AddAutoMapper(typeof(UserProfile));
 			services.AddControllersWithViews()
                 .AddFluentValidation(opt =>
                 {
