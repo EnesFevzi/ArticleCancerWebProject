@@ -1,6 +1,7 @@
 ﻿using ArticleCancer.Application.AutoMapper.Users;
 using ArticleCancer.Application.FluentValidations.Articles;
 using ArticleCancer.Infrastructure.Filter.ArticleVisitors;
+using ArticleCancer.Infrastructure.Filter.NewVisitors;
 using ArticleCancer.Infrastructure.Filter.VideoBlogVisitors;
 using ArticleCancer.Infrastructure.Helpers.Images;
 using ArticleCancer.Infrastructure.Helpers.Videos;
@@ -21,6 +22,7 @@ namespace ArticleCancer.Infrastructure.Extensions
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IAboutService, AboutService>();
             services.AddScoped<IVideoHelper, VideoHelper>();
             services.AddScoped<IArticleService, ArticleService>();
             services.AddScoped<ICategoryService, CategoryService>();
@@ -29,10 +31,12 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<INewService, NewService>();
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IVideoBlogService, VideoBlogService>();
+            services.AddScoped<ISendMailService, SendMailService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<ArticleVisitorFilter>();
             services.AddScoped<VideoBlogVisitorFilter>();
+            services.AddScoped<NewVisitorFilter>();
 
 
             services.AddAutoMapper(typeof(UserProfile));

@@ -91,12 +91,12 @@ namespace ArticleCancer.WebUI
                 endpoints.MapAreaControllerRoute(
                 name: "Admin",
                 areaName: "Admin",
-                pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                pattern: "{area:exists}/{controller=Dashboard1}/{action=Index}/{id?}"
                 );
 
                 endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+					pattern: "{controller=Article}/{action=Index}/{id?}");
 
 				
             });

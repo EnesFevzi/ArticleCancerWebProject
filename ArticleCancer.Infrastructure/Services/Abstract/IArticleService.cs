@@ -32,5 +32,6 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
         Task<ArticleDto> GetArticleDetailAsync(Guid articleId, string ipAddress);
 
         Task<List<ArticleDto>> GetAllArticlesNonDeletedTake3Async();
+        Task<List<ArticleDto>> GetAllArticlesNonDeletedTake6Async();
     }
 }

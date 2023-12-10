@@ -240,5 +240,14 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
             var map = _mapper.Map<ArticleDto>(articles);
             return map;
         }
+
+        public async Task<List<ArticleDto>> GetAllArticlesNonDeletedTake6Async()
+        {
+            var articles = await _unitofWork.GetRepository<Article>().GetAllAsync(x => !x.IsDeleted, x => x.Image);
+            var random = new Random();
+            var randomArticles = articles.OrderBy(a => random.Next()).Take(3).ToList();
+            var map = _mapper.Map<List<ArticleDto>>(randomArticles);
+            return map.Take(6).ToList();
+        }
     }
 }

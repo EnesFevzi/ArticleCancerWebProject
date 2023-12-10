@@ -21,5 +21,6 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
         Task<VideoBlogDto> GetVideoBlogDetailAsync(Guid videoBlogID, string ipAddress);
 
         Task<List<VideoBlogDto>> GetAllVideoBlogsNonDeletedTake3Async();
+        Task<List<VideoBlogDto>> GetAllVideoBlogsNonDeletedTake6Async();
     }
 }

@@ -21,7 +21,7 @@ namespace ArticleCancer.Domain.Entities
 
 
         public Guid VideoBlogID { get; set; }
-        public New New { get; set; }
+        public VideoBlog VideoBlog { get; set; }
         public int VisitorID { get; set; }
         public Visitor Visitor { get; set; }
     }

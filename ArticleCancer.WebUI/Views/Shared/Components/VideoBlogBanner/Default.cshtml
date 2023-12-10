@@ -1,0 +1,26 @@
+﻿@model List<VideoBlogDto>
+
+<div class="main-banner header-text">
+    <div class="container-fluid">
+        <div class="owl-banner owl-carousel">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <img src="~/videos/@item.Video.FileName" alt="">
+                    <div class="item-content">
+                        <div class="main-content">
+                            <a asp-area=" " asp-controller="VideoBlog" asp-action="Detail" asp-route-id="@item.VideoBlogID">
+                                <h4>@item.Title</h4>
+                            </a>
+                            <ul class="post-info">
+                                <li><a href="#">@item.User.FirstName @item.User.LastName</a></li>
+                                <li style="color: white; font-weight: bold; ">@item.CreatedDate.ToString("dd/MM/yyyy")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

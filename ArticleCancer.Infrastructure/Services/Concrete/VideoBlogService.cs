@@ -110,11 +110,11 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
                 return null;
             }
 
-            var articleVisitors = await _unitofWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
+            var articleVisitors = await _unitofWork.GetRepository<VideoBlogVisitor>().GetAllAsync(null, x => x.Visitor, y => y.VideoBlog);
 
             var addArticleVisitors = new VideoBlogVisitor(article.VideoBlogID, visitor?.VisitorID ?? 0);
 
-            if (!articleVisitors.Any(x => x.VisitorID == addArticleVisitors.VisitorID && x.ArticleID == addArticleVisitors.VideoBlogID))
+            if (!articleVisitors.Any(x => x.VisitorID == addArticleVisitors.VisitorID && x.VideoBlogID == addArticleVisitors.VideoBlogID))
             {
                 await _unitofWork.GetRepository<VideoBlogVisitor>().AddAsync(addArticleVisitors);
                 article.ViewCount += 1;
@@ -215,6 +215,13 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
             return article.Title;
         }
 
-
+        public async Task<List<VideoBlogDto>> GetAllVideoBlogsNonDeletedTake6Async()
+        {
+            var articles = await _unitofWork.GetRepository<VideoBlog>().GetAllAsync(x => !x.IsDeleted, x => x.Video);
+            var random = new Random();
+            var randomArticles = articles.OrderBy(a => random.Next()).Take(3).ToList();
+            var map = _mapper.Map<List<VideoBlogDto>>(randomArticles);
+            return map.Take(6).ToList();
+        }
     }
 }

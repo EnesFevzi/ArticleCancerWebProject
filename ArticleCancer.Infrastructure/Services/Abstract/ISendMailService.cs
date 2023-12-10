@@ -1,4 +1,5 @@
-﻿using AutoMapper.Internal;
+﻿using ArticleCancer.Application.DTOs.Mails;
+using AutoMapper.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,8 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
 {
 	public interface ISendMailService
 	{
-		//Task<bool> SendMail(MailRequest mailRequest);
+		Task<bool> SendContactMail(MailRequest mailRequest);
 		Task<bool> SendMail();
-
 		Task<bool> SendPasswordChange(string email, string scheme, string host);
 	}
 }

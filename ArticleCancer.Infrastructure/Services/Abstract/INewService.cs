@@ -22,5 +22,6 @@ namespace NewCancer.Infrastructure.Services.Abstract
         Task<NewDto> GetNewDetailAsync(Guid articleId, string ipAddress);
 
         Task<List<NewDto>> GetAllNewsNonDeletedTake3Async();
+        Task<List<NewDto>> GetAllNewsNonDeletedTake6Async();
     }
 }

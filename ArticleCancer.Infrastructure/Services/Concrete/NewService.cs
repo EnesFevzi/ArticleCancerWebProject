@@ -83,6 +83,15 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
             return map.Take(3).ToList();
         }
 
+        public async Task<List<NewDto>> GetAllNewsNonDeletedTake6Async()
+        {
+            var news = await _unitofWork.GetRepository<New>().GetAllAsync(x => !x.IsDeleted, x => x.Image);
+            var random = new Random();
+            var randomNews = news.OrderBy(a => random.Next()).Take(3).ToList();
+            var map = _mapper.Map<List<NewDto>>(randomNews);
+            return map.Take(6).ToList();
+        }
+
         public async Task<List<NewDto>> GetAllNewsWithCategoryDeletedAsync()
         {
             var articles = await _unitofWork.GetRepository<New>().GetAllAsync(x => x.IsDeleted, x => x.Category);
@@ -108,11 +117,11 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
                 return null;
             }
 
-            var articleVisitors = await _unitofWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
+            var articleVisitors = await _unitofWork.GetRepository<NewVisitor>().GetAllAsync(null, x => x.Visitor, y => y.New);
 
             var addArticleVisitors = new NewVisitor(article.NewID, visitor?.VisitorID ?? 0);
 
-            if (!articleVisitors.Any(x => x.VisitorID == addArticleVisitors.VisitorID && x.ArticleID == addArticleVisitors.NewID))
+            if (!articleVisitors.Any(x => x.VisitorID == addArticleVisitors.VisitorID && x.NewID == addArticleVisitors.NewID))
             {
                 await _unitofWork.GetRepository<NewVisitor>().AddAsync(addArticleVisitors);
                 article.ViewCount += 1;

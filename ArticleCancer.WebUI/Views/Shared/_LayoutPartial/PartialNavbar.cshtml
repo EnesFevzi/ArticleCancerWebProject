@@ -11,7 +11,7 @@
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><h2>MEME KANSERİ BLOG<em>.</em></h2></a>
+            <a class="navbar-brand" href="index.html"><h2>Meme Kanseri BLOG<em>.</em></h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,34 +19,34 @@
                 <ul class="navbar-nav ml-auto">
                     
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" asp-area=" " asp-controller="Home" asp-action="Index">
                             Ana Sayfa
-                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Hakkımızda</a>
+                        <a class="nav-link" asp-area=" " asp-controller="About" asp-action="Index">Hakkımızda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Bloglar</a>
+                        <a class="nav-link" asp-area=" " asp-controller="Article" asp-action="Index">Bloglar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="post-details.html">Haberler</a>
+                        <a class="nav-link" asp-area=" " asp-controller="New" asp-action="Index">Haberler</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="post-details.html">Videolar</a>
+                        <a class="nav-link" asp-area=" " asp-controller="VideoBlog" asp-action="Index">Videolar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">İletişim</a>
+                        <a class="nav-link" asp-area=" " asp-controller="Contact" asp-action="Index">İletişim</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Login" asp-controller="Auth" asp-area=" ">
+                            <i style="font-size:22px;" class="fa-brands fa fa-sign-in"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-action="Register" asp-controller="Auth" asp-area=" ">
                             <i style="font-size:22px;" class="fa-brands fa fa-user-plus"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Login" asp-controller="Auth" asp-area=" ">
-                            <i style="font-size:22px;" class="fa-brands fa fa-sign-in"></i>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -62,4 +62,4 @@
         </div>
     </nav>
 </header>
-<div style="height:150px;"></div>
+<div style="height:50px;"></div>

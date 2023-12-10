@@ -11,5 +11,6 @@ namespace ArticleCancer.Domain.Enums
         User = 0,
         Article = 1,
         New = 2,
+        About= 3,
     }
 }
