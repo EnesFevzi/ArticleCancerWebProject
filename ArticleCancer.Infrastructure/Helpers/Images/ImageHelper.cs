@@ -19,6 +19,7 @@ namespace ArticleCancer.Infrastructure.Helpers.Images
         private const string newImagesFolder = "new-images";
         private const string userImagesFolder = "user-images";
         private const string aboutImagesFolder = "about-images";
+        private const string announcementImagesFolder = "announcement-images";
 
         public ImageHelper(IWebHostEnvironment env)
         {
@@ -92,7 +93,11 @@ namespace ArticleCancer.Infrastructure.Helpers.Images
             {
                 folderName = aboutImagesFolder;
             }
-            else
+			else if (imageType == ImageType.Announcement)
+			{
+				folderName = announcementImagesFolder;
+			}
+			else
             {
                 folderName = newImagesFolder;
             }

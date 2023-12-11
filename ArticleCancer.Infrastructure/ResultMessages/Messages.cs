@@ -27,7 +27,26 @@ namespace ArticleCancer.Infrastructure.ResultMessages
                 return $"{articleTitle} başlıklı makale başarıyla geri alınmıştır.";
             }
         }
-        public static class Category
+		public static class Announcement
+		{
+			public static string Add(string articleTitle)
+			{
+				return $"{articleTitle} başlıklı duyuru başarıyla eklenmiştir.";
+			}
+			public static string Update(string articleTitle)
+			{
+				return $"{articleTitle} başlıklı duyuru başarıyla güncellenmiştir.";
+			}
+			public static string Delete(string articleTitle)
+			{
+				return $"{articleTitle} başlıklı duyuru başarıyla silinmiştir.";
+			}
+			public static string UndoDelete(string articleTitle)
+			{
+				return $"{articleTitle} başlıklı duyuru başarıyla geri alınmıştır.";
+			}
+		}
+		public static class Category
         {
             public static string Add(string categoryName)
             {

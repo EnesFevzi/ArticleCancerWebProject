@@ -23,6 +23,7 @@ namespace ArticleCancer.Infrastructure.Extensions
             var assembly = Assembly.GetExecutingAssembly();
             services.AddScoped<IImageHelper, ImageHelper>();
             services.AddScoped<IAboutService, AboutService>();
+            services.AddScoped<IAnnouncementService, AnnouncementService>();
             services.AddScoped<IVideoHelper, VideoHelper>();
             services.AddScoped<IArticleService, ArticleService>();
             services.AddScoped<ICategoryService, CategoryService>();

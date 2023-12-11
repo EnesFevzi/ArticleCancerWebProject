@@ -31,6 +31,7 @@ namespace ArticleCancer.Domain.Entities
         public ICollection<AppUser> Users { get; set; }
         public ICollection<New> News { get; set; }
         public ICollection<About> Abouts { get; set; }
+        public ICollection<Announcement> Announcements { get; set; }
 
 
     }

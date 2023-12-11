@@ -12,5 +12,6 @@ namespace ArticleCancer.Domain.Enums
         Article = 1,
         New = 2,
         About= 3,
-    }
+		Announcement=4,
+	}
 }

@@ -38,9 +38,9 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 			throw new NotImplementedException();
 		}
 
-		public Task<bool> SendPasswordChange(string email, string scheme, string host)
+		public async Task<bool> SendPasswordChange(string email, string scheme, string host)
 		{
-			throw new NotImplementedException();
+			return true;
 		}
 	}
 }
