@@ -13,6 +13,7 @@ using NToastNotify;
 namespace ArticleCancer.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = $"{RoleConsts.Admin}")]
     public class ArticleController : Controller
     {
         private readonly IArticleService _articleService;

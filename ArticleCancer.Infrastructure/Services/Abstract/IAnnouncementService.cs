@@ -19,7 +19,8 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
 		Task<string> UpdateAnnouncementAsync(AnnouncementUpdateDto articleUpdateDto);
 		Task<string> SafeDeleteAnnouncementAsync(Guid announcementId);
 		Task<string> UndoDeleteAnnouncementAsync(Guid announcementId);
-		Task<AnnouncementListDto> GetAllByPagingAsync(int currentPage = 1, int pageSize = 3,
+        Task<string> HardDeleteAnnouncementAsync(Guid announcementId);
+        Task<AnnouncementListDto> GetAllByPagingAsync(int currentPage = 1, int pageSize = 3,
 			bool isAscending = false);
 
 		Task<AnnouncementListDto> SearchAsync(string keyword, int currentPage = 1, int pageSize = 3,

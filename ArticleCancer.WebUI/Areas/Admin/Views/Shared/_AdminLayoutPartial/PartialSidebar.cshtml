@@ -18,7 +18,7 @@
             </li>
             <li class="menu-item">
                 <a asp-area="Admin" asp-controller="New" asp-action="Index" class="menu-link">
-                    <i class='menu-icon bx bx-paper-plane'></i>
+                    <i class='menu-icon bx bx-news'></i>
                     <div data-i18n="Analytics">Haber Yönetimi</div>
                 </a>
             </li>
@@ -38,6 +38,12 @@
                 <a asp-area="Admin" asp-controller="About" asp-action="Index" class="menu-link">
                     <i class='menu-icon bx bx-wallet-alt'></i>
                     <div data-i18n="Analytics">Hakkında Yönetimi</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a asp-area="Admin" asp-controller="Announcement" asp-action="Index" class="menu-link">
+                    <i class='menu-icon bx bxs-notification'></i>
+                    <div data-i18n="Analytics">Duyuru Yönetimi</div>
                 </a>
             </li>
           
@@ -131,6 +137,11 @@
                     <li class="menu-item">
                         <a asp-area="Admin" asp-controller="Category" asp-action="DeletedCategory" class="menu-link">
                             <div data-i18n="Notifications">Kategori</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-area="Admin" asp-controller="Announcement" asp-action="DeletedAnnouncement" class="menu-link">
+                            <div data-i18n="Notifications">Duyuru</div>
                         </a>
                     </li>
                     <li class="menu-item">

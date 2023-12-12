@@ -7,7 +7,7 @@ namespace ArticleCancer.Infrastructure.Services.Abstract
 {
     public interface IUserService
 	{
-		Task<List<UserDto>> GetAllUsersWithRoleAsync();
+		Task<List<UserListDto>> GetAllUsersWithRoleAsync();
 		Task<List<AppRole>> GetAllRolesAsync();
 		Task<(IdentityResult, string)> CreateUserAsync(UserAddDto userAddDto);
         Task<IdentityResult> CreateUserAsyncByAdmin(UserAddDto2 userAddDto);

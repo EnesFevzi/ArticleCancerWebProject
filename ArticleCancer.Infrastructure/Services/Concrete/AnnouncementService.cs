@@ -1,5 +1,4 @@
 ﻿using ArticleCancer.Application.DTOs.Announcements;
-using ArticleCancer.Application.DTOs.Articles;
 using ArticleCancer.Domain.Entities;
 using ArticleCancer.Domain.Enums;
 using ArticleCancer.Infrastructure.Extensions;
@@ -8,13 +7,9 @@ using ArticleCancer.Infrastructure.Services.Abstract;
 using ArticleCancer.Persistence.UnıtOfWorks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using static ArticleCancer.Infrastructure.ResultMessages.Messages;
+
+
 
 namespace ArticleCancer.Infrastructure.Services.Concrete
 {
@@ -142,7 +137,15 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 			return map;
 		}
 
-		public async Task<string> SafeDeleteAnnouncementAsync(Guid announcementId)
+        public async Task<string> HardDeleteAnnouncementAsync(Guid announcementId)
+        {
+            var category = await _unitofWork.GetRepository<Announcement>().GetByGuidAsync(announcementId);
+            await _unitofWork.GetRepository<Announcement>().DeleteAsync(category);
+            await _unitofWork.SaveAsync();
+            return category.Title;
+        }
+
+        public async Task<string> SafeDeleteAnnouncementAsync(Guid announcementId)
 		{
 			var userEmail = _user.GetLoggedInEmail();
 			var article = await _unitofWork.GetRepository<Announcement>().GetByGuidAsync(announcementId);

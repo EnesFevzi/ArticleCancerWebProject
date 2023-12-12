@@ -41,7 +41,11 @@ namespace ArticleCancer.Infrastructure.ResultMessages
 			{
 				return $"{articleTitle} başlıklı duyuru başarıyla silinmiştir.";
 			}
-			public static string UndoDelete(string articleTitle)
+            public static string HardDelete(string articleTitle)
+            {
+                return $"{articleTitle} başlıklı duyuru başarıyla kalıcı olarak silinmiştir.";
+            }
+            public static string UndoDelete(string articleTitle)
 			{
 				return $"{articleTitle} başlıklı duyuru başarıyla geri alınmıştır.";
 			}

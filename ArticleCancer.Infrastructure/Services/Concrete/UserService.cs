@@ -154,11 +154,10 @@ namespace ArticleCancer.Infrastructure.Services.Concrete
 			return roles;
 		}
 
-		public async Task<List<UserDto>> GetAllUsersWithRoleAsync()
+		public async Task<List<UserListDto>> GetAllUsersWithRoleAsync()
 		{
 			var users = await _userManager.Users.ToListAsync();
-			var map = _mapper.Map<List<UserDto>>(users);
-
+			var map = _mapper.Map<List<UserListDto>>(users);
 
 			foreach (var item in map)
 			{
