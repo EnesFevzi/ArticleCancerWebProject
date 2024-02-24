@@ -81,7 +81,7 @@ namespace ArticleCancer.WebUI.Controllers
                     client.Disconnect(true);
                 }
                 _toastNotification.AddSuccessToastMessage("Lütfen mailinizi kontrol ediniz. ", new ToastrOptions { Title = "İşlem Başarılı" });
-                return RedirectToAction("Login", "Auth", new { Area = "Admin" });
+                return RedirectToAction("Login", "Auth", new { Area = " " });
 
             }
             else
@@ -114,7 +114,7 @@ namespace ArticleCancer.WebUI.Controllers
             var result = await userManager.ResetPasswordAsync(user, token.ToString(), resetPasswordViewModel.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("Login", "Auth",new { Area = " " });
             }
             return View();
         }

@@ -20,6 +20,7 @@ namespace ArticleCancer.Application.AutoMapper.Users
 			CreateMap<AppUser, UserUpdateDto>().ReverseMap();
 			CreateMap<AppUser, UserProfileDto>().ReverseMap();
 			CreateMap<AppUser, UserDto>().ReverseMap();
+			CreateMap<AppUser, ApplicationUser>().ReverseMap();
 
 		}
 	}

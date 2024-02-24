@@ -53,12 +53,12 @@ namespace ArticleCancer.WebUI
                     Name = "ArticleCancer",
                     HttpOnly = true,
                     SameSite = SameSiteMode.Strict,
-                    SecurePolicy = CookieSecurePolicy.SameAsRequest, // Always 
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest,
                     IsEssential = true
 
                 };
-                config.SlidingExpiration = true;
-                config.ExpireTimeSpan = TimeSpan.FromDays(7);
+                config.SlidingExpiration = false;
+                config.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                 config.AccessDeniedPath = new PathString("/Auth/AccessDenied");
                 
 

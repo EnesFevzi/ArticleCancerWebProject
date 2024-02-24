@@ -34,6 +34,9 @@ namespace ArticleCancer.Persistence.Context
         public DbSet<Video> Videos { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<AnnouncementVisitor> AnnouncementVisitors { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

@@ -1,7 +1,9 @@
-﻿using ArticleCancer.Application.DTOs.Users;
+﻿using ArticleCancer.Application.DTOs.ApplicationUsers;
+using ArticleCancer.Application.DTOs.Users;
 using ArticleCancer.Application.Models.Emails;
 using ArticleCancer.Domain.Entities;
 using ArticleCancer.Infrastructure.Services.Abstract;
+using ArticleCancer.Infrastructure.Services.Concrete;
 using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -15,6 +17,7 @@ namespace ArticleCancer.WebUI.Controllers
     public class AuthController : Controller
     {
         private readonly UserManager<AppUser> userManager;
+        private readonly IApplicationUserService _applicationUserService;
         private readonly SignInManager<AppUser> signInManager;
         private readonly IUserService _userService;
 		private readonly IValidator<UserLoginDto> _loginValidator;
@@ -23,9 +26,10 @@ namespace ArticleCancer.WebUI.Controllers
 
 
 
-		public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<UserLoginDto> loginValidator,IUserService userService, IValidator<UserAddDto> registerValidator, IToastNotification toastNotification)
+		public AuthController(UserManager<AppUser> userManager, IApplicationUserService applicationUserService, SignInManager<AppUser> signInManager, IValidator<UserLoginDto> loginValidator,IUserService userService, IValidator<UserAddDto> registerValidator, IToastNotification toastNotification)
         {
             this.userManager = userManager;
+            _applicationUserService = applicationUserService;
             this.signInManager = signInManager;
             _loginValidator = loginValidator;
             _userService = userService;
@@ -112,7 +116,8 @@ namespace ArticleCancer.WebUI.Controllers
                     var result = await signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
                     if (result.Succeeded)
                     {
-                        //Response.Cookies.Append("ArticleCancer", "true");
+                       var applicationUserId = await _applicationUserService.CreateApplicationUserAsync(user);
+                        TempData["ApplicationUserID"] = applicationUserId;
                         return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                        
                     }
@@ -139,7 +144,24 @@ namespace ArticleCancer.WebUI.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Auth");
+            var applicationUserId = TempData["ApplicationUserID"];
+            if (applicationUserId != null && Guid.TryParse(applicationUserId.ToString(), out Guid userId))
+            {
+                await _applicationUserService.UpdateApplicationUserAsync(userId);
+            }
+            return RedirectToAction("Login","Auth", new { area = " " });
+        }
+        [HttpPost]
+        public async Task<IActionResult> LogoutOnPageClose()
+        {
+            await signInManager.SignOutAsync();
+            var applicationUserId = TempData["ApplicationUserID"];
+            if (applicationUserId != null && Guid.TryParse(applicationUserId.ToString(), out Guid userId))
+            {
+                await _applicationUserService.UpdateApplicationUserAsync(userId);
+            }
+
+            return Json(new { success = true });
         }
         [Authorize]
         [HttpGet]

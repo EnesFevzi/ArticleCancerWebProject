@@ -33,6 +33,7 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IVideoBlogService, VideoBlogService>();
             services.AddScoped<ISendMailService, SendMailService>();
+            services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<ArticleVisitorFilter>();
