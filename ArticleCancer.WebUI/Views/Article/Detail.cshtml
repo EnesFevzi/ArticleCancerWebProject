@@ -40,3 +40,35 @@
         </div>
     </div>
 </section>
+@section Scripts {
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js"></script> *@
+    <script>
+        debugger;
+        var contentDetailId = "@TempData["contentDetailId"]";
+        document.addEventListener("DOMContentLoaded", function () {
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl("/signalrHub") // SignalR hub'ının adresi
+                .build();
+
+            connection.start().then(function () {
+                console.log("SignalR bağlantısı başarıyla kuruldu.");
+
+                // Bağlantı başarıyla kurulduktan sonra yapılacak işlemler buraya eklenir
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            // Hub'dan mesaj alındığında
+            connection.on("ReceiveClosePage", function (receivedContentDetailId) {
+                console.log("Sayfa kapatıldı:", value);
+
+                // Sayfa kapatıldığında yapılacak işlemler buraya eklenir
+            });
+
+            window.addEventListener('beforeunload', function (event) {
+                // Sayfa kapatılmadan önce SignalR hub'ına mesaj gönder
+                connection.invoke("SendClosePage", contentDetailId).catch(err => console.error(err));
+            });
+        });
+    </script>
+}

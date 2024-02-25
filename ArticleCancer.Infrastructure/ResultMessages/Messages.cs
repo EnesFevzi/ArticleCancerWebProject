@@ -146,5 +146,13 @@ namespace ArticleCancer.Infrastructure.ResultMessages
                 return $"{userName} email adresli kullanıcı başarıyla silinmiştir.";
             }
         }
+        public static class Message
+        {
+            public static string Send(string messageName)
+            {
+                return $"{messageName} başlıklı mesaj başarıyla eklenmiştir.";
+            }
+
+        }
     }
 }

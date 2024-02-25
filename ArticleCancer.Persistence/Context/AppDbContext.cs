@@ -34,6 +34,7 @@ namespace ArticleCancer.Persistence.Context
         public DbSet<Video> Videos { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<AnnouncementVisitor> AnnouncementVisitors { get; set; }
+        public DbSet<ContentDetail> ContentDetails { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 

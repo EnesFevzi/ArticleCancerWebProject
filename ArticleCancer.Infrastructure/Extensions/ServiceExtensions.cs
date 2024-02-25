@@ -34,6 +34,8 @@ namespace ArticleCancer.Infrastructure.Extensions
             services.AddScoped<IVideoBlogService, VideoBlogService>();
             services.AddScoped<ISendMailService, SendMailService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
+            services.AddScoped<IContentDetailService, ContentDetailService>();
+            services.AddScoped<IMessageService, MessageService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<ArticleVisitorFilter>();

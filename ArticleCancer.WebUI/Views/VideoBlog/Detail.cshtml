@@ -10,10 +10,10 @@
                         <div class="col-lg-12">
                             <div class="blog-post">
                                 <div class="blog-thumb">
-                                    <video width="75%" height="auto" controls>
+                                    <video id="playButton" width="75%" height="auto" controls>
                                         <source src="~/videos/@Model.Video.FileName" type="video/mp4">
-                                        Tarayıcınız video etiketini desteklemiyor.
                                     </video>
+                                   
                                 </div>
                                 <div class="down-content">
                                     <a href="#"><h4>@Model.Title</h4></a>
@@ -43,3 +43,49 @@
         </div>
     </div>
 </section>
+@section Scripts {
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js"></script> *@
+    <script>
+        debugger;
+        var contentDetailId = "@TempData["contentDetailId"]";
+        document.addEventListener("DOMContentLoaded", function () {
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl("/signalrHub")
+                .build();
+          
+            
+
+            connection.start().then(function () {
+                console.log("SignalR bağlantısı başarıyla kuruldu.");
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            var videoElement = document.querySelector('video');
+            var playButton = document.getElementById('playButton');
+            if (videoElement) {
+                videoElement.addEventListener('click', function () {
+                    console.log('Video clicked!');
+
+                    connection.on("VideoClicked", function (receivedContentDetailId) {
+                        console.log("Video izlendi:", receivedContentDetailId);
+                        // Video izlendiğinde yapılacak işlemler buraya eklenir
+                    });
+
+                    connection.invoke("VideoClicked", contentDetailId).catch(err => console.error(err));
+                });
+            }
+ 
+            connection.on("ReceiveClosePage", function (receivedContentDetailId) {
+                console.log("Sayfa kapatıldı:", value);
+
+               
+            });
+
+            window.addEventListener('beforeunload', function (event) {
+               
+                connection.invoke("SendClosePage", contentDetailId).catch(err => console.error(err));
+            });
+        });
+    </script>
+}

@@ -1,10 +1,9 @@
-﻿using ArticleCancer.Infrastructure.Filter.NewVisitors;
+﻿using ArticleCancer.Domain.Entities;
 using ArticleCancer.Infrastructure.Filter.VideoBlogVisitors;
 using ArticleCancer.Infrastructure.Services.Abstract;
 using ArticleCancer.Persistence.UnıtOfWorks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using NewCancer.Infrastructure.Services.Abstract;
 
 namespace ArticleCancer.WebUI.Controllers
 {
@@ -15,13 +14,15 @@ namespace ArticleCancer.WebUI.Controllers
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUnıtOfWork _unıtOfWork;
+        private readonly IContentDetailService _contentDetailService;
 
-        public VideoBlogController(IVideoBlogService videoblogService, IMapper mapper, IHttpContextAccessor httpContextAccessor, IUnıtOfWork unıtOfWork)
+        public VideoBlogController(IVideoBlogService videoblogService, IMapper mapper, IHttpContextAccessor httpContextAccessor, IUnıtOfWork unıtOfWork, IContentDetailService contentDetailService)
         {
             _videoblogService = videoblogService;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
             _unıtOfWork = unıtOfWork;
+            _contentDetailService = contentDetailService;
         }
         public async Task<IActionResult> Index(Guid? categoryId, int currentPage = 1, int pageSize = 3, bool isAscending = false)
         {
@@ -46,6 +47,22 @@ namespace ArticleCancer.WebUI.Controllers
         }
         public async Task<IActionResult> Detail(Guid id)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+
+                string userName = User.Identity.Name;
+
+
+                var appUser = await _unıtOfWork.GetRepository<AppUser>().GetAsync(u => u.UserName == userName);
+
+                if (appUser != null)
+                {
+
+                    var contentDetailId = await _contentDetailService.CreateContentDetailAsync(appUser, "Blog");
+                    TempData["contentDetailId"] = contentDetailId.ToString();
+
+                }
+            }
             var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
 
             var articleDetail = await _videoblogService.GetVideoBlogDetailAsync(id, ipAddress);

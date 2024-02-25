@@ -6,6 +6,7 @@ using NToastNotify;
 using ArticleCancer.Application.Describers;
 using ArticleCancer.Persistence.Context;
 using System.Reflection;
+using ArticleCancer.WebUI.Hubs;
 
 
 namespace ArticleCancer.WebUI
@@ -22,9 +23,10 @@ namespace ArticleCancer.WebUI
             builder.Services.LoadDataLayerExtension(builder.Configuration);
             builder.Services.LoadServiceLayerExtension();
             builder.Services.AddSession();
-			
+            builder.Services.AddSignalR();
 
-			builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
+
+            builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
             {
                 PositionClass = ToastPositions.TopRight,
                 TimeOut = 3000,
@@ -81,6 +83,7 @@ namespace ArticleCancer.WebUI
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.MapHub<SignalRHub>("/signalrhub");
 
             //app.MapControllerRoute(
             //    name: "default",

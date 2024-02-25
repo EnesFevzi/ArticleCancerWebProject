@@ -13,12 +13,12 @@
                             {
                                 <input type="hidden" id="keyword" value="@Model.CurrentPage" />
                                 <div class="blog-post">
-                                    <video width="100%" height="auto" controls>
+                                    <video width="100%" height="auto">
                                         <source src="~/videos/@item.Video.FileName" type="video/mp4">
-                                        Tarayıcınız video etiketini desteklemiyor.
+                                      
                                     </video>
                                     <div class="down-content">
-                                        <a asp-area=" " asp-controller="VideBlog" asp-action="Detail" asp-route-id="@item.VideoBlogID"><h4>@item.Title</h4></a>
+                                        <a asp-area=" " asp-controller="VideoBlog" asp-action="Detail" asp-route-id="@item.VideoBlogID"><h4>@item.Title</h4></a>
                                         <ul class="post-info">
                                             <li>@item.User.FirstName @item.User.LastName</li>
                                             <li>@item.CreatedDate.ToString("dd/MM/yyyy")</li>
